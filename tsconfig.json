@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node", // 更改为 'node'
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "baseUrl": ".", // 使 TypeScript 正确识别 baseUrl 下的路径
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "allowJs": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["migrations/*", "src/generate/*", "node_modules","test/**/*"],
+  "include": ["src/**/*" ],
+  "esm": true
+}

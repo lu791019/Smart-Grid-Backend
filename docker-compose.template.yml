@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  aisails-backend:
+    image: repo.devpack.cc/smart-grid/smart-grid-backend:${IMAGE_TAG}
+    ports:
+      - 6000:3000
+    volumes:
+      - ./public:/app/public # 增加挂载卷
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - docker_server_netsserver
+    privileged: true # 可能需要根据您的需求调整，如果要完全使用DinD，需要开启
+    environment:
+      TZ: Asia/Taipei
+      INFLUXDB_HOST: influxdb
+      INFLUXDB_PORT: 8086
+      INFLUXDB_BUCKET: smart_grid
+      INFLUXDB_ORG: wistron
+      INFLUXDB_TOKEN: _2vP2-aoqWKPwLa2JCMa43oE_XOaMb_6btv0G3Bg-pu_KJxZnSH40GsbOSjP5rly_Ux5tZZSavGAEubAqSfH5Q==
+      MQTT_HOST: mqtt.energypowerdemo.com
+      MQTT_PORT: 8883
+      MQTT_USERNAME: user
+      MQTT_PASSWORD: 123
+      MQTT_CLIENT_ID: energypowerdemo2
+      NODE_ENV: prd
+networks:
+  docker_server_netsserver:
+    external: true
